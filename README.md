@@ -6,14 +6,25 @@ Doctor Notifier is a system that allows patients signal to their doctors/nurses.
 [The MQTT Protocol](http://mqtt.org/) was used as the protocol to broadcast message. Each patient acted as the Broker (Server), allowing the broadcast of messages and each doctor acted as subscriber. The MQTT Protocol was chosen because it allowed low power method to receive a large number of messages
 
 ## Demo
-
+### One Doctor
 ***Doctor_1*** RFID Scan ***Patient_1*** Tag ===> ***Doctor_1*** Subscribed to ***Patient_1***
 
 ***Patient_1*** Needs Help ===> ***Patient_1*** Dial Turned to Positon 2 ===> Message Broadcast to Subscribed Doctors
 
-***Doctor_1*** receives message ===> Problem Solved
+***Doctor_1*** receives message ===> Problem Addressed
 
 ***Doctor_1*** RFID Scan ***Patient_1*** Tag ===> ***Doctor_1*** Unsubscribes to ***Patient_1***
+
+### Multiple Doctors
+***Doctor_1*** and ***Doctor_2*** RFID Scan ***Patient_2*** Tag ===> ***Doctor_1*** and ***Doctor_2*** Subscribed to ***Patient_2***
+
+***Patient_1*** and ***Patient_2*** Needs Helps ===> ***Patient_1*** and ***Patient_2*** Dials Turned to Position 4 ===> Message Broadcast to Subscribed Doctors
+
+***Doctor_1*** and ***Doctor_2*** receives message from ***Patient_2*** ===> Problem Addressed by both Doctors
+
+***Doctor_1*** and ***Doctor-2*** RFID Scan ***Patient_2*** Tag ===> ***Doctor_1*** and ***Doctor_2*** Unsubscribes to ***Patient_1***
+
+*No doctor helps ***Patient_1*** *as no doctor was subscribed*
 
 # Setup
 
