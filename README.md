@@ -6,7 +6,7 @@ Doctor Notifier is a system that allows patients signal to their doctors/nurses.
 
 [The MQTT Protocal](http://mqtt.org/) was used as the protocal to broadcast message. Each patient acted as the Broker (Server), allowing the broacast of messages and each doctor acted as subscriber. The MQTT Protocal was chosen because it allowed low power method to recive a large number of messages
 
-# Demo
+## Demo
 
 ***Doctor_1*** RFID Scan ***Patient_1*** Tag ===> ***Doctor_1*** Subscribed to ***Patient_1***
 
@@ -15,6 +15,38 @@ Doctor Notifier is a system that allows patients signal to their doctors/nurses.
 ***Doctor_1*** recieves message ===> Problem Solved
 
 ***Doctor_1*** RFID Scan ***Patient_1*** Tag ===> ***Doctor_1*** Unsubsribes to ***Patient_1***
+
+# Setup
+
+## Prerequisites
+
+### Libraries
+[**Phidiget 22**](https://www.phidgets.com/docs/Language_-_Java#Libraries) needed for the sensors
+
+[**Eclipse Paho (MQTT 3.1.1)**](https://www.eclipse.org/paho/clients/java/#) needed for MQTT communication
+
+### Equipment
+
+#### Sensors
+* [**Phidiget Dial**]()
+* [**Phidiget RFID**]()
+* [**PhidgetInterfaceKit 8/8/8**]()
+
+#### Additional Equitment
+* [**LED**]()
+
+## Installation
+
+## Sensors
+Attach the Phidiget dial to PhidgetInterfaceKit 8/8/8 Voltage Input Channel 3
+Attach the LED to Digital Outputs Channel 0 and GRND
+
+Plug the PhidgetInterfaceKit 8/8/8 and the Phidiget RFID to the computer
+
+## Application
+Install the [**Phidiget 22**](https://www.phidgets.com/docs/Language_-_Java#Libraries) and [**Eclipse Paho (MQTT 3.1.1)**](https://www.eclipse.org/paho/clients/java/#) libraries
+
+Run the program 
 
 
 ## Authors
