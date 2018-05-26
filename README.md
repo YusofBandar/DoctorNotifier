@@ -7,7 +7,7 @@ Doctor Notifier is a system that allows patients signal to their doctors/nurses.
 
 ## Demo
 ### One Doctor
-***Doctor_1*** RFID Scan ***Patient_1*** Tag ⟹ ***Doctor_1*** Subscribed to ***Patient_1***
+***Doctor_1*** RFID Scan ***Patient_1*** Tag ➜ ***Doctor_1*** Subscribed to ***Patient_1***
 
 ***Patient_1*** Needs Help ⟹ ***Patient_1*** Dial Turned to Positon 2 ⟹ Message Broadcast to Subscribed Doctors
 
