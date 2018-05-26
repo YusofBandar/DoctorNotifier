@@ -24,9 +24,12 @@ Doctor Notifier is a system that allows patients signal to their doctors/nurses.
 
 ***Doctor_1*** and ***Doctor_2*** receives message from ***Patient_2*** ===> Problem Addressed by both Doctors
 
-***Doctor_1*** and ***Doctor-2*** RFID Scan ***Patient_2*** Tag ===> ***Doctor_1*** and ***Doctor_2*** Unsubscribes to ***Patient_1***
+***Patient_1*** Problem Not Addressed ===> No Doctors Were Subscribed
 
-*No doctor helps* ***Patient_1*** *as no doctor was subscribed*
+***Doctor_1*** RFID Scan ***Patient_2*** Tag ===> ***Doctor_1*** Unsubscribes to ***Patient_2***
+
+***Doctor_1*** RFID Scan ***Patient_1*** Tag ===> ***Doctor_1*** Subscribed to ***Patient_1***
+
 
 # Setup
 
