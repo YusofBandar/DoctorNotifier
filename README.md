@@ -17,3 +17,10 @@ Doctor Notifier is a system that allows patients signal to their doctors/nurses.
 ***Doctor_1*** RFID Scan ***Patient_1*** Tag ===> ***Doctor_1*** Unsubsribes to ***Patient_1***
 
 
+## Authors
+* **Yusof Bandar** - [YusofBandar](https://github.com/YusofBandar)
+* **Abd-Assamad Achouri** - [Achouri12](https://github.com/Achouri12)
+* **Naim Ahmed** - [NaimAhmed](https://github.com/NaimAhmed)
+* **Pritam Sangani** - [PritamSangani](https://github.com/PritamSangani) 
+
+See also the list of [contributors](https://github.com/Air92/Project-CAD/contributors) who participated in this project.
