@@ -2,110 +2,30 @@ import com.phidget22.*;
 
 public class Controller {
 	int timeDelay;
-	static Publisher publisher = new Publisher();
 	
 	
 	public static void main(String[] args) throws Exception{
+		Publisher publisher = new Publisher();
 		publisher.start();
-		// TODO Auto-generated method stub
-		VoltageInput volSensor = new VoltageInput();
-
-        volSensor.addAttachListener(new AttachListener() {
-			public void onAttach(AttachEvent ae) {
-				VoltageInput phid = (VoltageInput) ae.getSource();
-				try {
-					if(phid.getDeviceClass() != DeviceClass.VINT){
-						System.out.println("channel " + phid.getChannel() + " on device " + phid.getDeviceSerialNumber() + " attached");
-					}
-					else{
-						System.out.println("channel " + phid.getChannel() + " on device " + phid.getDeviceSerialNumber() + " hub port " + phid.getHubPort() + " attached");
-					}
-				} catch (PhidgetException ex) {
-					System.out.println(ex.getDescription());
-				}
-			}
-        });
-
-        volSensor.addDetachListener(new DetachListener() {
-			public void onDetach(DetachEvent de) {
-				VoltageInput phid = (VoltageInput) de.getSource();
-				try {
-					if (phid.getDeviceClass() != DeviceClass.VINT) {
-						System.out.println("channel " + phid.getChannel() + " on device " + phid.getDeviceSerialNumber() + " detached");
-					} else {
-						System.out.println("channel " + phid.getChannel() + " on device " + phid.getDeviceSerialNumber() + " hub port " + phid.getHubPort() + " detached");
-					}
-				} catch (PhidgetException ex) {
-					System.out.println(ex.getDescription());
-				}
-			}
-        });
-
-        volSensor.addErrorListener(new ErrorListener() {
-			public void onError(ErrorEvent ee) {
-				System.out.println("Error: " + ee.getDescription());
-			}
-        });
-        
-        
-        	try {
-                /*
-               * Please review the Phidget22 channel matching documentation for details on the device
-               * and class architecture of Phidget22, and how channels are matched to device features.
-               */
-
-               /*
-               * Specifies the serial number of the device to attach to.
-               * For VINT devices, this is the hub serial number.
-               *
-               * The default is any device.
-               */
-               //ch.setDeviceSerialNumber(<YOUR DEVICE SERIAL NUMBER>);
-               /*
-               * For VINT devices, this specifies the port the VINT device must be plugged into.
-               *
-               * The default is any port.
-               */
-               //ch.setHubPort(0);
-
-               /*
-               * Specifies that the channel should only match a VINT hub port.
-               * The only valid channel id is 0.
-               *
-               * The default is 0 (false), meaning VINT hub ports will never match
-               */
-                //ch.setIsHubPortDevice(true);
-
-               /*
-               * Specifies which channel to attach to.  It is important that the channel of
-               * the device is the same class as the channel that is being opened.
-               *
-               * The default is any channel.
-               */
-               //ch.setChannel(0);
-
-               /*
-               * In order to attach to a network Phidget, the program must connect to a Phidget22 Network Server.
-               * In a normal environment this can be done automatically by enabling server discovery, which
-               * will cause the client to discovery and connect to available servers.
-               *
-               * To force the channel to only match a network Phidget, set remote to 1.
-               */
-               // Net.enableServerDiscovery(ServerType.DEVICE);
-               // ch.setIsRemote(true);
-
-               System.out.println("Opening and waiting 5 seconds for attachment...");
-               volSensor.open(5000);
-               
-               System.out.println("\n\nGathering data for 10 seconds\n\n");
-               Thread.sleep(1000000);
-
-               volSensor.close();
-               System.out.println("\nClosed Voltage Input");
-               
-           } catch (PhidgetException ex) {
-               System.out.println(ex.getDescription());
-           }
+		
+		
+		Issue Idle =  new Issue("Idle","Patient is Idle",new double[]{-100d,0d},1000d);
+		Issue Toilet = new Issue("Toilet","Patient needs Toilet", new double[]{0.1d,1.5d},500d);
+		Issue Walk = new Issue("Walk","Patient needs to Walk", new double[]{1.6d,3.5d},200d);
+		Issue Intruder = new Issue("Intruder","INTRUDER", new double[]{3.6d,100d},100d);
+		
+		publisher.addIssue(Idle);
+		publisher.addIssue(Toilet);
+		publisher.addIssue(Walk);
+		publisher.addIssue(Intruder);
+		
+		RFIDConnect RFID = new RFIDConnect();
+		
+		Doctor _1 = new Doctor("1","2334");
+		Doctor _2 = new Doctor("2","3442");
+		
+		RFID.addDoctor(_1);
+		RFID.addDoctor(_2);
         
 	}
 	

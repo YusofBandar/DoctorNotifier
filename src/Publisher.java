@@ -136,29 +136,7 @@ public class Publisher {
         System.out.println("Published data. Topic: " + alertTopic.getName() + "  Message: " + message);
     }
     
-    /*public static int returnTime(String message) {
-    
-    	if(vol == 0.00)
-			alertMessage = "Idle";
-		if(vol > 0 && vol <= 1.5)
-			alertMessage = "Toilet";
-		if(vol > 1.5 && vol <= 3.5)
-			alertMessage = "Walk";
-		if(vol > 3.5)
-			alertMessage = "INTRUDER !!!!";
-    	
-    	int timeDelay = 0;
-    	if(message == "Idle")
-    		timeDelay = 1000;
-    	if(message == "Toilet")
-    		timeDelay = 500;
-    	if(message == "Walk")
-    		timeDelay = 200;	
-    	if(message == "INTRUDER !!!!")
-    		timeDelay = 100;
-    	
-    	return timeDelay;
-    }*/
+
 
 
     public static void main(String[] args) throws Exception{

@@ -7,7 +7,6 @@ import com.phidget22.*;
 public class RFIDConnect {
 
 	LinkedList<Doctor> Doctors =  new LinkedList<Doctor>();
-	Subscriber sub;
     public static void main(String[] args) throws PhidgetException {
         new RFIDConnect();
     }
