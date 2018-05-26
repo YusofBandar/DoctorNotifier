@@ -19,7 +19,7 @@ Doctor Notifier is a system that allows patients signal to their doctors/nurses.
 
 ## Authors
 * **Yusof Bandar** - [YusofBandar](https://github.com/YusofBandar)
-* **Abd-Assamad Achouri** - [Achouri12](https://github.com/Achouri12)
+* **Abd-Assamad Achouri** - [Achouri12](https://github.com/Abd-AssamadAchouri)
 * **Naim Ahmed** - [NaimAhmed](https://github.com/NaimAhmed)
 * **Pritam Sangani** - [PritamSangani](https://github.com/PritamSangani) 
 
