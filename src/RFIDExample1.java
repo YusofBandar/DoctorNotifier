@@ -11,7 +11,7 @@ public class RFIDExample1 {
     }
 
     public RFIDExample1() throws PhidgetException {
-    	sub = new Subscriber("Test");
+    	sub = new Subscriber();
 
     	
     	RFID phid = new RFID();

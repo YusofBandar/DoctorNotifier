@@ -1,23 +1,18 @@
-
-
-import utils.Utils;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-/**
- * @author Dominik Obermaier
- * @author Christian Götz
- */
+import mqtt.utils.Utils;
+
 public class Subscriber {
 
     public static final String BROKER_URL = "tcp://broker.mqttdashboard.com:1883";
-    String name;
+
     //We have to generate a unique Client id.
     String clientId = Utils.getMacAddress() + "-sub";
     private MqttClient mqttClient;
 
-    public Subscriber(String name) {
-    	this.name = name;
+    public Subscriber() {
+    
         try {
             mqttClient = new MqttClient(BROKER_URL, clientId);
 
@@ -34,7 +29,7 @@ public class Subscriber {
             mqttClient.setCallback(new SubscribeCallback());
             mqttClient.connect();
             //Subscribe to all subtopics of home
-            final String topic = "hospital/room/3";
+            final String topic = "hospital/room3.01/bed3";
             mqttClient.subscribe(topic);
 
             System.out.println("Subscriber is now listening to "+topic);
@@ -56,7 +51,7 @@ public class Subscriber {
     }
 
     public static void main(String... args) {
-        final Subscriber subscriber = new Subscriber("test");
+        final Subscriber subscriber = new Subscriber();
         subscriber.start();
     }
 

@@ -1,33 +1,53 @@
 
 
-import utils.Utils;
-import org.eclipse.paho.client.mqttv3.*;
+
+import java.util.LinkedList;
+
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.MqttTopic;
 
 import com.phidget22.*;
+
+import mqtt.utils.Utils;
 
 public class Publisher {
 
     public static final String BROKER_URL = "tcp://broker.mqttdashboard.com:1883";
-    VoltageInput volSensor;
-    public static final String patientAlert = "hospital/room/3";
+   
+    public static final String patientAlert = "hospital/room3.01/bed3";
+    
+    private LinkedList Issues;
+    
     public String alertMessage = "";
-    DigitalOutput digOut;
-    //public static final String  = "home/temperature";
+    
+    //Dial
+    private VoltageInput volSensor;
+    //LED
+    private DigitalOutput digOut;
 
     private MqttClient client;
 
-
     public Publisher() {
+    	
+    	Issues = new LinkedList<Issue>();
+    	
     	try {
+    		//Setup Dial
 			volSensor = new VoltageInput();
+			volSensor.open();
+			
+			//Setup LED
 			digOut  = new DigitalOutput();
 			digOut.setChannel(0);
-			volSensor.open();
 			digOut.open();
 		} catch (PhidgetException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+    	
         //We have to generate a unique Client id.
         String clientId = Utils.getMacAddress() + "-pub";
 
