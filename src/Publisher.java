@@ -81,7 +81,7 @@ public class Publisher {
     void start() {
 
         try {
-        	
+        	Issue issue = null;
         	String alertMessage = "";
             MqttConnectOptions options = new MqttConnectOptions();
             options.setCleanSession(false);
@@ -101,49 +101,24 @@ public class Publisher {
 				}
 				
 				for (Issue i : Issues) {
-		    		
+		    		if(i.VoltageCheck(vol)){
+		    			issue = i;
+		    			break;
+		    		}
 				}
 				
+				publishAlert(issue.AlertMessage());
 				
-				if(vol == 0.00)
-					alertMessage = "Idle";
-				if(vol > 0 && vol <= 1.5)
-					alertMessage = "Toilet";
-				if(vol > 1.5 && vol <= 3.5)
-					alertMessage = "Walk";
-				if(vol > 3.5)
-					alertMessage = "INTRUDER !!!!";
-            	System.out.println("AM: " +alertMessage + "(" + vol + ")");
-            	if(!alertMessage.equals(""))
-                	publishAlert(alertMessage);
-            	
-            	if(!alertMessage.equals("Idle")){
-            		try {
-    					digOut.setState(true);
-    				} catch (PhidgetException e) {
-    					// TODO Auto-generated catch block
-    					e.printStackTrace();
-    				}
-                    Thread.sleep(returnTime(alertMessage)/2);
-                    
-                    try {
-    					digOut.setState(false);
-    				} catch (PhidgetException e) {
-    					// TODO Auto-generated catch block
-    					e.printStackTrace();
-    				}
-                    
-                    Thread.sleep(returnTime(alertMessage)/2);
-            		
-            	}else{
-            		try {
-						digOut.setState(false);
-						Thread.sleep(returnTime(alertMessage));
-					} catch (PhidgetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-            	}
+				Thread.sleep((long) (issue.TimeDelay()/2));
+				try {
+					digOut.setState(true);
+				} catch (PhidgetException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				Thread.sleep((long) (issue.TimeDelay()/2));
+				
+				
             	
             }
         } catch (MqttException e) {
@@ -157,13 +132,21 @@ public class Publisher {
     private void publishAlert(String message) throws MqttException {
         final MqttTopic alertTopic = client.getTopic(patientAlert);
 
-       
         alertTopic.publish(new MqttMessage(message.getBytes()));
-
         System.out.println("Published data. Topic: " + alertTopic.getName() + "  Message: " + message);
     }
     
-    public static int returnTime(String message) {
+    /*public static int returnTime(String message) {
+    
+    	if(vol == 0.00)
+			alertMessage = "Idle";
+		if(vol > 0 && vol <= 1.5)
+			alertMessage = "Toilet";
+		if(vol > 1.5 && vol <= 3.5)
+			alertMessage = "Walk";
+		if(vol > 3.5)
+			alertMessage = "INTRUDER !!!!";
+    	
     	int timeDelay = 0;
     	if(message == "Idle")
     		timeDelay = 1000;
@@ -175,7 +158,7 @@ public class Publisher {
     		timeDelay = 100;
     	
     	return timeDelay;
-    }
+    }*/
 
 
     public static void main(String[] args) throws Exception{

@@ -3,11 +3,13 @@ import java.util.Arrays;
 public class Issue {
 	
 	private String Title;
+	private String AlertMessage;
 	private double[] VoltageRange = new double[2];
 	private double TimeDelay;
 	
-	public Issue(String Title,double[] VoltageRange, double TimeDelay){
+	public Issue(String Title, String AlertMessage, double[] VoltageRange, double TimeDelay){
 		this.Title = Title;
+		this.AlertMessage = AlertMessage;
 		this.VoltageRange[0] = VoltageRange[0];
 		this.VoltageRange[1] = VoltageRange[1];
 		this.TimeDelay = TimeDelay;
@@ -24,6 +26,16 @@ public class Issue {
 	public void Title(String Title){
 		this.Title = Title;
 	}
+	
+	
+	public String AlertMessage(){
+		return AlertMessage;
+	}
+	
+	public void AlertMessage(String AlertMessage){
+		this.AlertMessage = AlertMessage;
+	}
+	
 	
 	public double[] VoltageRange(){
 		return VoltageRange;
