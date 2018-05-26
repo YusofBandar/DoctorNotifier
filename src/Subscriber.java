@@ -25,8 +25,8 @@ public class Subscriber {
         }
     }
     
-    public String Source(){
-    	return Source;
+    public String DeviceName(){
+    	return DeviceName;
     }
 
     public void start() {

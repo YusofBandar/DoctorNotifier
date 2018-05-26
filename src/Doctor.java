@@ -26,19 +26,19 @@ public class Doctor {
 		this.Tag = Tag;
 	}
 	
-	public void Connection(String Source){
+	public void Connection(String DeviceName){
 		int length= Patients.size();
 		
 		for(int i=0;i<length;i++){
 			Subscriber sub = Patients.get(i);
-			if(sub.Source().equals(Source)){
+			if(sub.DeviceName().equals(DeviceName)){
 				sub.stop();
 				Patients.remove(i);
 				return;
 			}
 		}
 		
-		Subscriber sub =  new Subscriber(Source);
+		Subscriber sub =  new Subscriber(DeviceName);
 		Patients.addLast(sub);
 		sub.start();
 		

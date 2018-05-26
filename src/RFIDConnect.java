@@ -11,6 +11,23 @@ public class RFIDConnect {
     public static void main(String[] args) throws PhidgetException {
         new RFIDConnect();
     }
+    
+    public void addDoctor(Doctor doctor){
+    	Doctors.add(doctor);
+    }
+    
+    public void deleteDocotor(Doctor doctor){
+    	Doctors.remove(doctor);
+    }
+    
+    public Doctor getDoctor(String doctorName){
+    	for (Doctor d : Doctors) {
+    		if(d.Name().equals(doctorName)){
+    			return d;
+    		}
+		}
+    	return null;
+    }
 
     public RFIDConnect() throws PhidgetException {
     	
@@ -23,9 +40,10 @@ public class RFIDConnect {
 			public void onTag(RFIDTagEvent e) {
 				String tag = e.getTag();
 				System.out.println("Tag read: " + e.getTag());
-				
+				boolean found = false;
 				for(Doctor d : Doctors){
 					if(d.Tag().equals(tag)){
+						found = true;
 						try {
 							d.Connection(e.getSource().getDeviceName());
 						} catch (PhidgetException e1) {
@@ -34,8 +52,6 @@ public class RFIDConnect {
 						}
 					}
 				}
-				
-				
 			}
         });
 
@@ -60,11 +76,5 @@ public class RFIDConnect {
 			e1.printStackTrace();
 		}
         }
-
-        phid.close();
-        System.out.println("\nClosed RFID");
-
-
-
 }
 }
