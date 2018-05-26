@@ -19,9 +19,7 @@ public class Publisher {
    
     public static final String patientAlert = "hospital/room3.01/bed3";
     
-    private LinkedList Issues;
-    
-    public String alertMessage = "";
+    private LinkedList<Issue> Issues;
     
     //Dial
     private VoltageInput volSensor;
@@ -61,13 +59,30 @@ public class Publisher {
             System.exit(1);
         }
     }
-    public void setAlertMessage(String message) {
-    	this.alertMessage = message;
-    	
+    
+    public void addIssue(Issue issue){
+    	Issues.add(issue);
     }
+    
+    public void deleteIssue(Issue issue){
+    	Issues.remove(issue);
+    }
+    
+    public Issue getIssue(String issueTitle){
+    	for (Issue i : Issues) {
+    		if(i.Title().equals(issueTitle)){
+    			return i;
+    		}
+		}
+    	return null;
+    }
+    
+  
     void start() {
 
         try {
+        	
+        	String alertMessage = "";
             MqttConnectOptions options = new MqttConnectOptions();
             options.setCleanSession(false);
             options.setWill(client.getTopic("hospital/room/3/LWT"), "I'm gone :(".getBytes(), 0, false);
