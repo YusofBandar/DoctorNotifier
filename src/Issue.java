@@ -1,5 +1,6 @@
 import java.util.Arrays;
 
+//Issue holding type of issue
 public class Issue {
 	
 	private String Title;
@@ -15,6 +16,7 @@ public class Issue {
 		this.TimeDelay = TimeDelay;
 	}
 	
+	//checks the voltage input 
 	public boolean VoltageCheck(double Voltage){
 		return VoltageRange[0] <= Voltage && Voltage >= VoltageRange[1];
 	}
