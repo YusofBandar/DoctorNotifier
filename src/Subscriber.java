@@ -9,10 +9,12 @@ public class Subscriber {
 
     //We have to generate a unique Client id.
     String clientId = Utils.getMacAddress() + "-sub";
+    String Source;
     private MqttClient mqttClient;
 
-    public Subscriber() {
+    public Subscriber(String Source) {
     
+    	this.Source =Source;;
         try {
             mqttClient = new MqttClient(BROKER_URL, clientId);
 
@@ -21,6 +23,10 @@ public class Subscriber {
             e.printStackTrace();
             System.exit(1);
         }
+    }
+    
+    public String Source(){
+    	return Source;
     }
 
     public void start() {
@@ -51,7 +57,7 @@ public class Subscriber {
     }
 
     public static void main(String... args) {
-        final Subscriber subscriber = new Subscriber();
+        final Subscriber subscriber = new Subscriber("tets");
         subscriber.start();
     }
 
