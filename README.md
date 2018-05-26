@@ -23,4 +23,4 @@ Doctor Notifier is a system that allows patients signal to their doctors/nurses.
 * **Naim Ahmed** - [NaimAhmed](https://github.com/NaimAhmed)
 * **Pritam Sangani** - [PritamSangani](https://github.com/PritamSangani) 
 
-See also the list of [contributors](https://github.com/Air92/Project-CAD/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/YusofBandar/DoctorNotifier/graphs/contributors) who participated in this project.
