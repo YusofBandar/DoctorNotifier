@@ -6,3 +6,14 @@ Doctor Notifier is a system that allows patients signal to their doctors/nurses.
 
 [The MQTT Protocal](http://mqtt.org/) was used as the protocal to broadcast message. Each patient acted as the Broker (Server), allowing the broacast of messages and each doctor acted as subscriber. The MQTT Protocal was chosen because it allowed low power method to recive a large number of messages
 
+# Demo
+
+Doctor_1 RFID Scan Patient_1 Tag ===> Doctor_1 Subscribed to Patient_1
+
+Patient_1 Needs Help ===> Patient_1 Dial Turned to Positon 2 ===> Message Broadcast to Subscribed Doctors
+
+Doctor_1 recieves message ===> Problem Solved
+
+Doctor_1 RFID Scan Patient_1 Tag ===> Doctor_1 Unsubsribes to Patient_1
+
+
