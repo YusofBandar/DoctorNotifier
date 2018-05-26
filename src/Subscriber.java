@@ -9,12 +9,12 @@ public class Subscriber {
 
     //We have to generate a unique Client id.
     String clientId = Utils.getMacAddress() + "-sub";
-    String Source;
+    String DeviceName;
     private MqttClient mqttClient;
 
-    public Subscriber(String Source) {
+    public Subscriber(String DeviceName) {
     
-    	this.Source =Source;;
+    	this.DeviceName = DeviceName;
         try {
             mqttClient = new MqttClient(BROKER_URL, clientId);
 

@@ -6,7 +6,7 @@ import com.phidget22.*;
 
 public class RFIDConnect {
 
-	LinkedList<String> Doctors =  new LinkedList<String>();
+	LinkedList<Doctor> Doctors =  new LinkedList<Doctor>();
 	Subscriber sub;
     public static void main(String[] args) throws PhidgetException {
         new RFIDConnect();
@@ -17,12 +17,25 @@ public class RFIDConnect {
 
     	
     	RFID phid = new RFID();
-    		
+    	
     	// Make the RFID Phidget able to detect loss or gain of an rfid card
         phid.addTagListener(new RFIDTagListener() {
 			public void onTag(RFIDTagEvent e) {
 				String tag = e.getTag();
 				System.out.println("Tag read: " + e.getTag());
+				
+				for(Doctor d : Doctors){
+					if(d.Tag().equals(tag)){
+						try {
+							d.Connection(e.getSource().getDeviceName());
+						} catch (PhidgetException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				}
+				
+				
 			}
         });
 
