@@ -100,6 +100,11 @@ public class Publisher {
 					e.printStackTrace();
 				}
 				
+				for (Issue i : Issues) {
+		    		
+				}
+				
+				
 				if(vol == 0.00)
 					alertMessage = "Idle";
 				if(vol > 0 && vol <= 1.5)
@@ -172,17 +177,7 @@ public class Publisher {
     	return timeDelay;
     }
 
-    /*private void publishBrightness() throws MqttException {
-        final MqttTopic brightnessTopic = client.getTopic(patientAlert);
 
-        final int brightnessNumber = Utils.createRandomNumberBetween(0, 100);
-        final String brigthness = brightnessNumber + "%";
-
-        brightnessTopic.publish(new MqttMessage(brigthness.getBytes()));
-
-        System.out.println("Published data. Topic: " + brightnessTopic.getName() + "   Message: " + brigthness);
-    }*/
-    
     public static void main(String[] args) throws Exception{
     	Publisher pub = new Publisher();
     	pub.start();
